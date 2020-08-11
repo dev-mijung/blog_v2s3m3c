@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dev.mvc.blog_categrp.Blog_CategrpDAOInter 패키지에 등록 된 
+      interface 명시, 패키지명과 인터페이스명은 실제로 존재해야 함
+      Spring이 내부적으로 자동으로 interface를 구현 해 줌--> 
+ 
+ <mapper namespace="dev.mvc.blog_categrp.Blog_Categrp_DAOInter">
+  <insert id="categrp_create" parameterType="Blog_Categrp_VO">
+    INSERT INTO blog_categrp(blog_categrpno, blog_name, blog_seqno, blog_visible, blog_rdate)
+    VALUES(blog_categrp_seq.nextval, #{blog_name}, #{blog_seqno}, #{blog_visible}, sysdate)
+  </insert>
+  
+  <select id="list_blog_seqno_asc" resultType="Blog_Categrp_VO" >
+    SELECT blog_categrpno, blog_name, blog_seqno, blog_visible, blog_rdate
+    FROM blog_categrp
+    ORDER BY blog_seqno ASC
+  </select>
+  
+  <select id="read" resultType="Blog_Categrp_VO" parameterType="int">
+    SELECT blog_categrpno, blog_name, blog_seqno, blog_visible, blog_rdate
+    FROM blog_categrp
+    WHERE blog_categrpno = #{blog_categrpno}
+  </select>
+  
+  <update id="update" parameterType="Blog_Categrp_VO">
+    UPDATE blog_categrp
+    SET blog_name=#{blog_name}, blog_seqno=#{blog_seqno}, blog_visible=#{blog_visible}
+    WHERE blog_categrpno=#{blog_categrpno}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    DELETE blog_categrp
+    WHERE blog_categrpno=#{blog_categrpno}
+  </delete>
+  
+  <!-- 우선순위 상향 up 10 ▷ 1 -->
+  <update id="update_seqno_up" parameterType="int">
+    UPDATE blog_categrp
+    SET blog_seqno = blog_seqno - 1
+    WHERE blog_categrpno = #{blog_categrpno}
+  </update>
+  
+  <!-- 우선순위 하향 up 10 ▷ 1 -->
+  <update id="update_seqno_down" parameterType="int">
+    UPDATE blog_categrp
+    SET blog_seqno = blog_seqno + 1
+    WHERE blog_categrpno =#{blog_categrpno}
+  </update>
+  
+  <!-- 출력 모드의 변경 -->
+  <update id="update_visible" parameterType="Blog_Categrp_VO">
+    UPDATE blog_categrp
+    SET blog_visible=#{blog_visible}
+    WHERE blog_categrpno=#{blog_categrpno}
+  </update>
+  
+  <!--  페이징 목록-->
+  <select id="list_paging" resultType="Blog_Categrp_VO" parameterType="HashMap">
+    SELECT blog_categrpno, blog_name, blog_seqno, blog_visible, blog_rdate, r
+    FROM (
+            SELECT blog_categrpno, blog_name, blog_seqno, blog_visible, blog_rdate, rownum as r
+            FROM (
+                        SELECT blog_categrpno, blog_name, blog_seqno, blog_visible, blog_rdate
+                        FROM blog_categrp
+                        ORDER BY blog_seqno DESC
+              )
+    )
+    WHERE <![CDATA[ r >= #{startNum} AND r <= #{endNum} ]]>
+    <!-- 
+     1 page: WHERE r >= 1 AND r <= 10; 
+     2 page: WHERE r >= 11 AND r <= 20;
+     3 page: WHERE r >= 21 AND r <= 30;
+     -->       
+  </select>
+   
+  <!-- 검색갯수 -->
+  <select id="search_count" resultType="int" parameterType="HashMap">
+    SELECT COUNT(*) as cnt FROM blog_categrp
+  </select>
+ </mapper>

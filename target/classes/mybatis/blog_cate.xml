@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dev.mvc.blog_cate.Blog_Cate_DAOInter">
+  <insert id="create" parameterType="Blog_Cate_VO">
+    INSERT INTO blog_cate(cate_no, blog_categrpno, cate_name, cate_seqno, cate_visible, cate_rdate, cate_cnt)
+    VALUES(blog_cate_seq.nextval, #{blog_categrpno}, #{cate_name}, #{cate_seqno}, #{cate_visible}, sysdate, 0)
+  </insert>
+  
+  <select id="list_seqno_asc" resultType="Blog_Cate_VO">
+    SELECT cate_no, blog_categrpno, cate_name, cate_seqno, cate_visible, cate_rdate, cate_cnt
+    FROM blog_cate
+    ORDER BY blog_categrpno ASC, cate_seqno ASC
+  </select>
+  
+  <select id="read" resultType="Blog_Cate_VO" parameterType="int">
+    SELECT cate_no, blog_categrpno, cate_name, cate_seqno, cate_visible, cate_rdate, cate_cnt
+    FROM blog_cate
+    WHERE cate_no = #{cate_no}
+  </select>
+  
+  <update id="update" parameterType="Blog_Cate_VO">
+    UPDATE blog_cate
+    SET cate_name=#{cate_name}, cate_seqno=#{cate_seqno}, cate_visible=#{cate_visible}
+    WHERE cate_no = #{cate_no}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    DELETE FROM blog_cate
+    WHERE cate_no = #{cate_no}
+  </delete>
+  
+  <update id="update_seqno_up" parameterType="int">
+    UPDATE blog_cate
+    SET cate_seqno = cate_seqno -1
+    WHERE cate_no = #{cate_no}
+  </update>
+  
+  <update id="update_seqno_down" parameterType="int">
+    UPDATE blog_cate
+    SET cate_seqno = cate_seqno+1
+    WHERE cate_no=#{cate_no}
+  </update>
+  
+  <update id="update_visible" parameterType="Blog_Cate_VO">
+    UPDATE blog_cate
+    SET cate_visible = #{cate_visible}
+    WHERE cate_no=#{cate_no}
+  </update>
+
+</mapper>
