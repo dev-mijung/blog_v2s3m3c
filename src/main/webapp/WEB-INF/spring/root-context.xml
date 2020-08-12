@@ -19,7 +19,8 @@
     <property name="typeAliasesPackage" 
                    value="dev.mvc.blog,
                              dev.mvc.blog_categrp,
-                             dev.mvc.blog_cate" />
+                             dev.mvc.blog_cate,
+                             dev.mvc.blog_contents" />
     <property name="mapperLocations" value="classpath:mybatis/*.xml" />
   </bean>
   

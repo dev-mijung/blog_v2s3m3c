@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/WEB-INF/doc/dbms/blog_cate.sql=MS949
 encoding//src/main/webapp/WEB-INF/doc/dbms/blog_categrp.sql=MS949
+encoding//src/main/webapp/WEB-INF/doc/dbms/blog_contents.sql=MS949
+encoding//src/main/webapp/WEB-INF/doc/dbms/member.sql=MS949
 encoding//src/main/webapp/blog_categrp/test.jsp=UTF-8
