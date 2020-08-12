@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dev.mvc.blog_contents.Blog_Contents_DAOInter">
+  <insert id="create" parameterType="Blog_Contents_VO">
+    INSERT INTO blog_contents(contents_no, cate_no, member_no, contents_title, contents_content, 
+                                     contents_web, ip, contents_passwd, contents_word, contents_rdate, file1, thumb1, size1)
+    VALUES(blog_contents_seq.nextval, #{cate_no}, #{member_no}, #{contents_title}, #{contents_content}, 
+                #{contents_web},#{ip},#{contents_passwd},#{contents_word},sysdate,#{file1},#{thumb1},#{size1});
+  </insert>
+</mapper>
