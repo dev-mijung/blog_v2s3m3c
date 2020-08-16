@@ -91,4 +91,10 @@ SELECT contents_no, cate_no, member_no, contents_title, contents_content,
                                      contents_web, ip, contents_passwd, contents_word, contents_rdate
 FROM blog_contents;   
 
+-- 1°Ç Á¶È¸
+SELECT contents_no, cate_no, member_no, contents_title, contents_content, 
+                                     contents_web, ip, contents_passwd, contents_word, contents_rdate
+FROM blog_contents
+WHERE contents_no = 2;
+
 COMMIT;
