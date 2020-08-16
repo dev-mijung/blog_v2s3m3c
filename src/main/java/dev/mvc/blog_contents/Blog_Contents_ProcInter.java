@@ -15,5 +15,5 @@ public interface Blog_Contents_ProcInter {
    * ºí·Î±× ÄÁÅÙÃ÷ ¸ñ·Ï
    * @return
    */
-  public List<Blog_Contents_VO> list();
+  public List<Blog_Contents_VO> list_all();
 }

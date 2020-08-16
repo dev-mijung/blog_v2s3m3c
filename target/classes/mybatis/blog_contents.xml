@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 #{contents_web},#{ip},#{contents_passwd},#{contents_word},sysdate)
   </insert>
   
-  <select id="list" resultType="Blog_Contents_VO">
+  <select id="list_all" resultType="Blog_Contents_VO">
     SELECT contents_no, cate_no, member_no, contents_title, contents_content, 
                                      contents_web, ip, contents_passwd, contents_word, contents_rdate
     FROM blog_contents

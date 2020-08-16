@@ -12,7 +12,7 @@
     <a class='menu_link'  href='${root}' >Home</a> |
     <a class='menu_link'  href='${root}/blog_categrp/list.do'>카테고리 그룹</a> |
     <a class='menu_link'  href='${root}/blog_cate/list.do'>카테고리</a> |
-    <a class='menu_link'  href='${root}/blog_categrp/list.do'>전체글</a>
+    <a class='menu_link'  href='${root}/blog_contents/list_all.do'>전체글</a>
   </nav>
 </div>
   <!-- 화면을 2개로 분할하여 좌측은 메뉴, 우측은 내용으로 구성-->
@@ -22,7 +22,7 @@
        <div style='margin-top: 5px; margin-left:20px;'>
          <img src='${root}/menu/images/peng.jpg' style='width: 80%;'><br>JJUNG'S BLOG
          <br>
-         ▷ <a href='${root }/blog_categrp/list.do'>전체글</a>
+         ▷ <a href='${root }/blog_contents/list_all.do'>전체글</a>
        </div>
     </div>
     

@@ -82,6 +82,9 @@ public class Blog_Contents_VO {
   /** °Ë»ö¾î */
   private String contents_word;
   
+  /** ÄÁÅÙÃ÷ µî·ÏÀÏ */
+  private String contents_rdate;
+  
   public int getContents_no() {
     return contents_no;
   }
@@ -201,5 +204,11 @@ public class Blog_Contents_VO {
   }
   public void setContents_word(String contents_word) {
     this.contents_word = contents_word;
+  }
+  public String getContents_rdate() {
+    return contents_rdate;
+  }
+  public void setContents_rdate(String contents_rdate) {
+    this.contents_rdate = contents_rdate;
   }
 }

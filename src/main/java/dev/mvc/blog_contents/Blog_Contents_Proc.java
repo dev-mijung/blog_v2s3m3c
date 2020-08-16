@@ -17,8 +17,8 @@ public class Blog_Contents_Proc implements Blog_Contents_ProcInter {
   }
 
   @Override
-  public List<Blog_Contents_VO> list() {
-    List<Blog_Contents_VO> list = this.blog_Contents_DAO.list();
+  public List<Blog_Contents_VO> list_all() {
+    List<Blog_Contents_VO> list = this.blog_Contents_DAO.list_all();
     return list;
   }
 

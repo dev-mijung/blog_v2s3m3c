@@ -1,5 +1,7 @@
 package dev.mvc.blog_contents;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,21 @@ public class Blog_Contents_Cont {
     int cnt = this.Blog_Contents_Proc.create(blog_Contents_VO);
     mav.addObject("cnt",cnt);
     mav.setViewName("/blog_contents/create_msg");
+    
+    return mav;
+  }
+  
+  /**
+   * ÄÁÅÙÃ÷ ÀüÃ¼¸ñ·Ï
+   * @return
+   */
+  @RequestMapping(value="/blog_contents/list_all.do", method=RequestMethod.GET)
+    public ModelAndView list_all() {
+    ModelAndView mav = new ModelAndView();
+    
+    List<Blog_Contents_VO> list_all = this.Blog_Contents_Proc.list_all();
+    mav.addObject("list_all", list_all);
+    mav.setViewName("/blog_contents/list_all");
     
     return mav;
   }
