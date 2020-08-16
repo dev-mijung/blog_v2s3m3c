@@ -1,5 +1,7 @@
 package dev.mvc.blog_contents;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,24 @@ public class Blog_Contents_Cont {
     ModelAndView mav = new ModelAndView();
     
     mav.setViewName("/blog_contents/create");
+    
+    return mav;
+  }
+  
+  /**
+   * 컨텐츠 등록 처리
+   * @param blog_Contents_VO
+   * @return
+   */
+  @RequestMapping(value="/blog_contents/create.do", method=RequestMethod.POST)
+    public ModelAndView create(HttpServletRequest request, Blog_Contents_VO blog_Contents_VO) {
+    ModelAndView mav = new ModelAndView();
+    
+    blog_Contents_VO.setIp(request.getRemoteAddr()); // 접속자 IP 자동산출
+    
+    int cnt = this.Blog_Contents_Proc.create(blog_Contents_VO);
+    mav.addObject("cnt",cnt);
+    mav.setViewName("/blog_contents/create_msg");
     
     return mav;
   }
