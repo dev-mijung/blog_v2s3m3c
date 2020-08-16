@@ -88,7 +88,7 @@ VALUES(blog_contents_seq.nextval, 1, 1, '스프링', '열공열공', 'http://https://sp
 
 -- LIST
 SELECT contents_no, cate_no, member_no, contents_title, contents_content, 
-                                     contents_web, ip, contents_passwd, contents_word, contents_rdate, file1, thumb1, size1
+                                     contents_web, ip, contents_passwd, contents_word, contents_rdate
 FROM blog_contents;   
 
 COMMIT;
