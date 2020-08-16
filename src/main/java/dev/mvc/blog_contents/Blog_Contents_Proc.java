@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import dev.mvc.tool.Tool;
+
 @Component("dev.mvc.blog_contents.Blog_Contents_Proc")
 public class Blog_Contents_Proc implements Blog_Contents_ProcInter {
 @Autowired
@@ -20,6 +22,18 @@ public class Blog_Contents_Proc implements Blog_Contents_ProcInter {
   public List<Blog_Contents_VO> list_all() {
     List<Blog_Contents_VO> list = this.blog_Contents_DAO.list_all();
     return list;
+  }
+
+  @Override
+  public Blog_Contents_VO read(int contents_no) {
+    
+    Blog_Contents_VO blog_Contents_VO = this.blog_Contents_DAO.read(contents_no);
+    
+    String title = blog_Contents_VO.getContents_title();
+    title = Tool.convertChar(title);
+    blog_Contents_VO.setContents_title(title);
+    
+    return blog_Contents_VO;
   }
 
 }

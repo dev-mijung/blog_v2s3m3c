@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class Blog_Categrp_Cont {
   @Autowired
   @Qualifier("dev.mvc.blog_categrp.Blog_Categrp_Proc")
+  
   private Blog_Categrp_ProcInter blog_Categrp_Proc;
   
   public Blog_Categrp_Cont() {

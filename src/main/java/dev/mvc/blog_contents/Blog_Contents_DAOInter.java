@@ -16,4 +16,11 @@ public interface Blog_Contents_DAOInter {
    * @return
    */
   public List<Blog_Contents_VO> list_all();
+  
+  /**
+   * ºí·Î±× ÄÁÅÙÃ÷ 1°Ç Á¶È¸
+   * @param contents_no
+   * @return
+   */
+  public Blog_Contents_VO read(int contents_no);
 }
