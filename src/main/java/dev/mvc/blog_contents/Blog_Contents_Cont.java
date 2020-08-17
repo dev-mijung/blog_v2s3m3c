@@ -1,12 +1,15 @@
 package dev.mvc.blog_contents;
 
+import java.util.HashMap;
 import java.util.List;
 
+import javax.jws.WebParam.Mode;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,7 +34,7 @@ public class Blog_Contents_Cont {
    private Blog_Contents_ProcInter Blog_Contents_Proc;
   
   public Blog_Contents_Cont() {
-    
+    System.out.println("Blog_Contents_Cont created.");
   }
   
   
@@ -101,6 +104,123 @@ public class Blog_Contents_Cont {
     mav.addObject("blog_Categrp_VO", blog_Categrp_VO);
     
     mav.setViewName("/blog_contents/read");
+    return mav;
+  }
+  
+  /**
+   * 블로그 컨텐츠 수정 폼
+   * @return
+   */
+  @RequestMapping(value="/blog_contents/update.do", method=RequestMethod.GET)
+    public ModelAndView update(int contents_no) {
+    
+    ModelAndView mav = new ModelAndView();
+    
+    Blog_Contents_VO blog_Contents_VO = this.Blog_Contents_Proc.read(contents_no);
+    mav.addObject("blog_Contents_VO", blog_Contents_VO);
+    
+    mav.setViewName("/blog_contents/update");
+    
+    return mav;
+  }
+  
+  /**
+   * 블로그 컨텐츠 수정 처리
+   * @param blog_Contents_VO
+   * @return
+   */
+  @RequestMapping(value="/blog_contents/update.do", method=RequestMethod.POST)
+    public ModelAndView update(Blog_Contents_VO blog_Contents_VO) {
+    
+    ModelAndView mav = new ModelAndView();
+    
+    Blog_Cate_VO blog_Cate_VO = this.blog_Cate_Proc.read(blog_Contents_VO.getCate_no());
+    mav.addObject("cate_no",blog_Cate_VO.getCate_no());
+    mav.addObject("contents_no",blog_Contents_VO.getContents_no());
+    
+    HashMap<String, Object> map = new HashMap<String, Object>();
+    map.put("contents_no", blog_Contents_VO.getContents_no());
+    map.put("contents_passwd", blog_Contents_VO.getContents_passwd());
+    
+    int passwd_cnt =0; // 패스워드 일치 레코드 갯수
+    int cnt = 0; // 수정 된 레코드 갯수
+    
+    passwd_cnt = this.Blog_Contents_Proc.passwd_check(map);
+    
+    if(passwd_cnt == 1) { // 패스워드 일치
+      cnt = this.Blog_Contents_Proc.update(blog_Contents_VO);
+    }
+    
+    mav.addObject("cnt", cnt);
+    mav.addObject("passwd_cnt", passwd_cnt);
+    
+    if(cnt == 1 && passwd_cnt == 1) {
+      mav.setViewName("/blog_contents/update_msg");
+    } else {
+      mav.setViewName("/blog_contents/update_msg");
+    }
+    return mav;
+  }
+  
+  /**
+   * 블로그 컨텐츠 삭제 폼
+   * @param cate_no
+   * @param contents_no
+   * @return
+   */
+  @RequestMapping(value="/blog_contents/delete.do", method=RequestMethod.GET)
+    public ModelAndView delete(int cate_no, int contents_no) {
+    ModelAndView mav = new ModelAndView();
+    
+    Blog_Contents_VO blog_Contents_VO = this.Blog_Contents_Proc.read(contents_no);
+    mav.addObject("blog_Contents_VO", blog_Contents_VO);
+    
+    Blog_Cate_VO blog_Cate_VO = this.blog_Cate_Proc.read(blog_Contents_VO.getCate_no());
+    mav.addObject("blog_Cate_VO", blog_Cate_VO);
+    mav.addObject("cate_no", blog_Cate_VO.getCate_no());
+    
+    mav.setViewName("/blog_contents/delete");
+    return mav;
+  }
+  /**
+   * 블로그 컨텐츠 삭제 처리
+   * @param contents_no
+   * @return
+   */
+  @RequestMapping(value="/blog_contents/delete.do", method=RequestMethod.POST)
+    public ModelAndView delete(int contents_no) {
+    ModelAndView mav = new ModelAndView();
+    
+    Blog_Contents_VO blog_Contents_VO = this.Blog_Contents_Proc.read(contents_no);
+    mav.addObject("blog_Contents_VO", blog_Contents_VO);
+    
+    Blog_Cate_VO blog_Cate_VO = this.blog_Cate_Proc.read(blog_Contents_VO.getCate_no());
+    mav.addObject("blog_Cate_VO", blog_Cate_VO);
+    mav.addObject("cate_no", blog_Cate_VO.getCate_no());
+    
+    HashMap map = new HashMap();
+    map.put("contents_no",blog_Contents_VO.getContents_no());
+    map.put("contents_passwd", blog_Contents_VO.getContents_passwd());
+    
+    int cnt = 0;
+    int passwd_cnt = 0;
+    
+    passwd_cnt = this.Blog_Contents_Proc.passwd_check(map);
+    
+    if(cnt==1) {
+    cnt = this.Blog_Contents_Proc.delete(contents_no);
+    }
+    
+    mav.addObject("cnt",cnt);
+    mav.addObject("passwd_cnt", passwd_cnt);
+    
+    if(cnt == 1 && passwd_cnt == 1) {
+      mav.setViewName("/blog_contents/delete_msg");
+    } else {
+      mav.setViewName("/blog_contents/delete_msg");
+    }
+    
+    
     return mav;
   }
 }

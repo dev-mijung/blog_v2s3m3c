@@ -1,5 +1,6 @@
 package dev.mvc.blog_contents;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface Blog_Contents_DAOInter {
@@ -23,4 +24,25 @@ public interface Blog_Contents_DAOInter {
    * @return
    */
   public Blog_Contents_VO read(int contents_no);
+  
+  /**
+   * 블로그 컨텐츠 수정
+   * @param blog_Contents_VO
+   * @return
+   */
+  public int update(Blog_Contents_VO blog_Contents_VO);
+  
+  /**
+   * 수정,삭제시 패스워드 체크
+   * @param map
+   * @return
+   */
+  public int passwd_check(HashMap map);
+  
+  /**
+   * 블로그 컨텐츠 삭제
+   * @param contents_no
+   * @return
+   */
+  public int delete(int contents_no);
 }

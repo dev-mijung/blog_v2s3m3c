@@ -97,4 +97,17 @@ SELECT contents_no, cate_no, member_no, contents_title, contents_content,
 FROM blog_contents
 WHERE contents_no = 2;
 
+-- 수정
+UPDATE blog_contents
+SET contents_title = '오늘은 어떤공부?', contents_content='어떤공부하지?', contents_web='http://google.com', contents_word='공부'
+WHERE contents_no=3;
+
+-- 패스워드 검사
+SELECT COUNT(*) as passwd_cnt
+FROM blog_contents
+WHERE contents_no=4 AND contents_passwd=1234;
+
+-- 삭제
+DELETE FROM blog_contents
+WHERE contents_no=5;
 COMMIT;

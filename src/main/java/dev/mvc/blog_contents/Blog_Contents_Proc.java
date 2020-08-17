@@ -1,5 +1,6 @@
 package dev.mvc.blog_contents;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,30 @@ public class Blog_Contents_Proc implements Blog_Contents_ProcInter {
     blog_Contents_VO.setContents_title(title);
     
     return blog_Contents_VO;
+  }
+
+  @Override
+  public int update(Blog_Contents_VO blog_Contents_VO) {
+    int cnt = this.blog_Contents_DAO.update(blog_Contents_VO);
+    return cnt;
+  }
+  
+  @Override
+  public Blog_Contents_VO update(int contents_no) {
+    Blog_Contents_VO blog_Contents_VO = this.blog_Contents_DAO.read(contents_no);
+    return blog_Contents_VO;
+  }
+  
+  @Override
+  public int passwd_check(HashMap map) {
+    int cnt = this.blog_Contents_DAO.passwd_check(map);
+    return cnt;
+  }
+
+  @Override
+  public int delete(int contents_no) {
+    int cnt = this.blog_Contents_DAO.delete(contents_no);
+    return cnt;
   }
 
 }

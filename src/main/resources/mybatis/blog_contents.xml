@@ -24,4 +24,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     FROM blog_contents
     WHERE contents_no = #{contents_no}
   </select>
+  
+  <update id="update" parameterType="Blog_Contents_VO">
+    UPDATE blog_contents
+    SET contents_title = #{contents_title}, contents_content=#{contents_content}, contents_web=#{contents_web}, 
+          contents_word=#{contents_word}
+    WHERE contents_no=#{contents_no}
+  </update>
+  
+  <select id="passwd_check" parameterType="HashMap" resultType="int">
+    SELECT COUNT(*) as passwd_cnt
+    FROM blog_contents
+    WHERE contents_no=#{contents_no} AND contents_passwd=#{contents_passwd}
+  </select>
+  
+  <delete id="delete" parameterType="int">
+    DELETE FROM blog_contents
+    WHERE contents_no=#{contents_no}
+  </delete>
 </mapper>
