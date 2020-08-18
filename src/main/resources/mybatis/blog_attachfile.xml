@@ -9,4 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     VALUES(blog_attachfile_seq.nextval, #{contents_no}, #{fname}, #{fupname}, #{thumb}, #{fsize}, sysdate)
   </insert>
   
+  <select id="list" resultType="Blog_Attachfile_VO">
+    SELECT attachfile_no, contents_no, fname, fupname, thumb, fsize, attachfile_rdate
+    FROM blog_attachfile
+    ORDER BY contents_no DESC, attachfile_no ASC
+  </select>
 </mapper>

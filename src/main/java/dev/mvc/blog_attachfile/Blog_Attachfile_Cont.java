@@ -37,7 +37,12 @@ public class Blog_Attachfile_Cont {
     return mav;
   }
   
-  
+  /**
+   * 颇老殿废 贸府
+   * @param request
+   * @param blog_Attachfile_VO
+   * @return
+   */
   @RequestMapping(value="/blog_attachfile/create.do", method=RequestMethod.POST)
     public ModelAndView create(HttpServletRequest request, Blog_Attachfile_VO blog_Attachfile_VO) {
     ModelAndView mav = new ModelAndView();
@@ -83,6 +88,22 @@ public class Blog_Attachfile_Cont {
     mav.addObject("contents_no", contents_no);
     
     mav.setViewName("redirect:/blog_attachfile/create_msg.jsp");
+    return mav;
+  }
+  
+  /**
+   * 颇老 格废
+   * @return
+   */
+  @RequestMapping(value="/blog_attachfile/list.do", method=RequestMethod.GET)
+    public ModelAndView list() {
+    ModelAndView mav = new ModelAndView();
+    
+    List<Blog_Attachfile_VO> list = this.blog_Attachfile_Proc.list();
+    mav.addObject("list",list);
+    
+    mav.setViewName("/blog_attachfile/list");
+    
     return mav;
   }
 }
