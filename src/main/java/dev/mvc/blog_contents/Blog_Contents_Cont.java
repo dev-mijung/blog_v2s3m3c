@@ -188,7 +188,7 @@ public class Blog_Contents_Cont {
    * @return
    */
   @RequestMapping(value="/blog_contents/delete.do", method=RequestMethod.POST)
-    public ModelAndView delete(int contents_no) {
+    public ModelAndView delete(int contents_no, String contents_passwd) {
     ModelAndView mav = new ModelAndView();
     
     Blog_Contents_VO blog_Contents_VO = this.Blog_Contents_Proc.read(contents_no);
@@ -198,16 +198,16 @@ public class Blog_Contents_Cont {
     mav.addObject("blog_Cate_VO", blog_Cate_VO);
     mav.addObject("cate_no", blog_Cate_VO.getCate_no());
     
-    HashMap map = new HashMap();
-    map.put("contents_no",blog_Contents_VO.getContents_no());
-    map.put("contents_passwd", blog_Contents_VO.getContents_passwd());
+    HashMap<String, Object> map = new HashMap<String, Object>();
+    map.put("contents_no", contents_no);
+    map.put("contents_passwd", contents_passwd);
     
     int cnt = 0;
     int passwd_cnt = 0;
     
     passwd_cnt = this.Blog_Contents_Proc.passwd_check(map);
     
-    if(cnt==1) {
+    if(passwd_cnt==1) {
     cnt = this.Blog_Contents_Proc.delete(contents_no);
     }
     
@@ -219,8 +219,6 @@ public class Blog_Contents_Cont {
     } else {
       mav.setViewName("/blog_contents/delete_msg");
     }
-    
-    
     return mav;
   }
 }

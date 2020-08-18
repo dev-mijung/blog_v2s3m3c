@@ -50,7 +50,7 @@ public class Blog_Contents_Proc implements Blog_Contents_ProcInter {
   }
   
   @Override
-  public int passwd_check(HashMap map) {
+  public int passwd_check(HashMap<String, Object> map) {
     int cnt = this.blog_Contents_DAO.passwd_check(map);
     return cnt;
   }

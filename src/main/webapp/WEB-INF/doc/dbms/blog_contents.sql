@@ -110,4 +110,5 @@ WHERE contents_no=4 AND contents_passwd=1234;
 -- ªË¡¶
 DELETE FROM blog_contents
 WHERE contents_no=5;
+
 COMMIT;

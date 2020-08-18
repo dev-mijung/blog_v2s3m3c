@@ -37,7 +37,7 @@ public interface Blog_Contents_DAOInter {
    * @param map
    * @return
    */
-  public int passwd_check(HashMap map);
+  public int passwd_check(HashMap<String, Object> map);
   
   /**
    * ºí·Î±× ÄÁÅÙÃ÷ »èÁ¦

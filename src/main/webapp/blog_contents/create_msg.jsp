@@ -56,7 +56,7 @@
           </c:choose>
           
           <button type='button'
-                      onclick='location.href="./list.do?cate_no=${param.cate_no }"'
+                      onclick='location.href="./list_all.do?cate_no=${param.cate_no }"'
                       class='btn btn-info'>목록</button>
         </li>
       </ul>
