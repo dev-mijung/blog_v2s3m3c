@@ -79,4 +79,13 @@ UPDATE blog_cate
 SET cate_visible = 'N'
 WHERE cate_no=4;
 
+-- ХыЧе VO
+SELECT r.blog_categrpno as r_blog_categrpno, r.blog_name as r_blog_name,
+          c.cate_no as cate_no, c.blog_categrpno as blog_categrpno, c.cate_name as cate_name,
+          c.cate_seqno as cate_seqno, c.cate_visible as cate_visible, c.cate_rdate as cate_rdate,
+          c.cate_cnt as cate_cnt
+FROM blog_categrp r, blog_cate c
+WHERE r.blog_categrpno = c.blog_categrpno
+ORDER BY r.blog_categrpno ASC, c.cate_seqno ASC;
+
 COMMIT;
