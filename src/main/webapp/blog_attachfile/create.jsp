@@ -28,10 +28,10 @@
   
   <div class='menu_line'></div>
   <div style='width: 100%;'>
-    <form name='frm' method='POST'  action='./create.co' enctype='multipart/form-data' 
+    <form name='frm' method='POST'  action='./create.do' enctype='multipart/form-data' 
               class='form-horizontal'> 
       <input type='hidden' name='cate_no' id='cate_no' value='1'>
-      <input type='hidden' name='contents_no' id='contents_no' value='1'>
+      <input type='hidden' name='contents_no' id='contents_no' value='${param.contents_no }'>
       
       <div class='form-group'>
         <div class='col-md-12'>

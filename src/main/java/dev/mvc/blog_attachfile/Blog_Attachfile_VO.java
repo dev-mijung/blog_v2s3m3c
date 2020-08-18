@@ -26,7 +26,7 @@ public class Blog_Attachfile_VO {
   private String thumb;
   
   /** 파일 크기 */
-  private int fsize;
+  private long fsize;
   
   /** 등록일 */
   private String attachfile_rdate;
@@ -74,11 +74,11 @@ public class Blog_Attachfile_VO {
     this.thumb = thumb;
   }
 
-  public int getFsize() {
+  public long getFsize() {
     return fsize;
   }
 
-  public void setFsize(int fsize) {
+  public void setFsize(long fsize) {
     this.fsize = fsize;
   }
 

@@ -28,7 +28,7 @@
   </aside>
   
   <aside style='float: right;'>
-    <a href='../attachfile/create.do?contents_no=${contents_no }&cate_no=${cate_no}'>파일 등록</a>
+    <a href='../blog_attachfile/create.do?contents_no=${contents_no }&cate_no=${cate_no}'>파일 등록</a>
     <span class='menu_divide'> | </span>
     <a href='javascript:location.reload();'>새로고침</a>
     <span class='menu_divide'> | </span>

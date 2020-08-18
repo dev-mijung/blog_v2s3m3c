@@ -82,4 +82,5 @@ ORDER BY c.contents_no DESC, a.attachfile_no ASC;
 SELECT attachfile_no, contents_no, fname, fupname, thumb, fsize, attachfile_rdate
 FROM blog_attachfile
 WHERE attachfile_no=2;
+
 COMMIT;
