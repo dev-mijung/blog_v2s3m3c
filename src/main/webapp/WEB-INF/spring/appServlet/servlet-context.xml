@@ -26,6 +26,7 @@
   <context:component-scan base-package="dev.mvc.blog_categrp" /><!-- 블로그 카테고리 그룹-->
 	<context:component-scan base-package="dev.mvc.blog_cate" /><!-- 블로그 카테고리-->
   <context:component-scan base-package="dev.mvc.blog_contents" /><!-- 블로그 컨텐츠-->
+  <context:component-scan base-package="dev.mvc.blog_attachfile" /><!-- 블로그 첨부파일-->
   
   <!-- FORM의 FILE 태그를 읽어 MultipartFile 객체로 변환 -->
   <beans:bean id="multipartResolver"

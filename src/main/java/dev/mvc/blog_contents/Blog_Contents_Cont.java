@@ -34,7 +34,7 @@ public class Blog_Contents_Cont {
    private Blog_Contents_ProcInter Blog_Contents_Proc;
   
   public Blog_Contents_Cont() {
-    System.out.println("Blog_Contents_Cont created.");
+    System.out.println("--> Blog_Contents_Cont created.");
   }
   
   

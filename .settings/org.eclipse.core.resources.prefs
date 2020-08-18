@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/doc/dbms/blog_attachfile.sql=MS949
 encoding//src/main/webapp/WEB-INF/doc/dbms/blog_cate.sql=MS949
 encoding//src/main/webapp/WEB-INF/doc/dbms/blog_categrp.sql=MS949
 encoding//src/main/webapp/WEB-INF/doc/dbms/blog_contents.sql=MS949

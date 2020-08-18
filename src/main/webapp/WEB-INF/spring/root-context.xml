@@ -20,7 +20,8 @@
                    value="dev.mvc.blog,
                              dev.mvc.blog_categrp,
                              dev.mvc.blog_cate,
-                             dev.mvc.blog_contents" />
+                             dev.mvc.blog_contents,
+                             dev.mvc.blog_attachfile" />
     <property name="mapperLocations" value="classpath:mybatis/*.xml" />
   </bean>
   
