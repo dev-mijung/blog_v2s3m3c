@@ -38,7 +38,7 @@ public class Blog_Attachfile_Cont {
   }
   
   /**
-   * 파일등록 처리
+   * 첨부파일 등록 처리
    * @param request
    * @param blog_Attachfile_VO
    * @return
@@ -92,7 +92,7 @@ public class Blog_Attachfile_Cont {
   }
   
   /**
-   * 파일 목록
+   * 첨부파일 목록
    * @return
    */
   @RequestMapping(value="/blog_attachfile/list.do", method=RequestMethod.GET)
@@ -103,6 +103,46 @@ public class Blog_Attachfile_Cont {
     mav.addObject("list",list);
     
     mav.setViewName("/blog_attachfile/list");
+    
+    return mav;
+  }
+  
+//  /**
+//   * 첨부파일 조회
+//   * @param attachfile_no
+//   * @return
+//   */
+//  @RequestMapping(value="/blog_attachfile/read.do", method=RequestMethod.GET)
+//    public ModelAndView read(int attachfile_no) {
+//    ModelAndView mav = new ModelAndView();
+//    
+//    Blog_Attachfile_VO blog_Attachfile_VO = this.blog_Attachfile_Proc.read(attachfile_no);
+//    mav.addObject("blog_Attachfile_VO", blog_Attachfile_VO);
+//    
+//    mav.setViewName("/blog_attachfile/read");
+//    
+//    return mav;
+//  }
+  
+  /**
+   * 첨부파일 1건 삭제 처리
+   * @param attachfile_no
+   * @return
+   */
+  @RequestMapping(value="/blog_attachfile/delete.do", method=RequestMethod.GET)
+    public ModelAndView delete(HttpServletRequest request, int attachfile_no) {
+    ModelAndView mav = new ModelAndView();
+    
+    // 삭제 할 파일정보 읽어 오기 
+    Blog_Attachfile_VO blog_Attachfile_VO = this.blog_Attachfile_Proc.read(attachfile_no);
+    
+    String upDir = Tool.getRealPath(request, "/blog_attachfile/storage");
+    Tool.deleteFile(upDir, blog_Attachfile_VO.getFupname()); // folder에서 1건의 파일 삭제
+    Tool.deleteFile(upDir, blog_Attachfile_VO.getThumb()); // 1건의 Thumb파일 삭제
+    
+    this.blog_Attachfile_Proc.delete(attachfile_no);; // DBMS에서 1건의 파일 삭제
+    
+    mav.setViewName("redirect:/blog_attachfile/list.do");
     
     return mav;
   }

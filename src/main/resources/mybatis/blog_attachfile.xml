@@ -14,4 +14,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     FROM blog_attachfile
     ORDER BY contents_no DESC, attachfile_no ASC
   </select>
+  
+  <select id="read" resultType="Blog_Attachfile_VO" parameterType="int">
+    SELECT attachfile_no, contents_no, fname, fupname, thumb, fsize, attachfile_rdate
+    FROM blog_attachfile
+    WHERE attachfile_no=#{attachfile_no}
+  </select>
+  
+  <delete id="delete" parameterType="int">
+    DELETE FROM blog_attachfile
+    WHERE attachfile_no = #{attachfile_no}
+  </delete>
 </mapper>

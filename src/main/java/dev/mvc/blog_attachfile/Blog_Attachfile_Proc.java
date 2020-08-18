@@ -22,4 +22,16 @@ public class Blog_Attachfile_Proc implements Blog_Attachfile_ProcInter {
     return list;
   }
 
+  @Override
+  public Blog_Attachfile_VO read(int attachfile_no) {
+    Blog_Attachfile_VO blog_Attachfile_VO = this.blog_Attachfile_DAO.read(attachfile_no);
+    return blog_Attachfile_VO;
+  }
+
+  @Override
+  public int delete(int attachfile_no) {
+    int cnt = this.blog_Attachfile_DAO.delete(attachfile_no);
+    return cnt;
+  }
+
 }

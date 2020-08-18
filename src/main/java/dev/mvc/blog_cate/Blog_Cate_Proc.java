@@ -65,5 +65,11 @@ private Blog_Cate_DAOInter blog_Cate_DAO;
     cnt = this.blog_Cate_DAO.update_visible(blog_Cate_VO);
     return cnt;
   }
+
+  @Override
+  public List<Blog_Categrp_Cate_VO> list_join() {
+    List<Blog_Categrp_Cate_VO> list_join = this.blog_Cate_DAO.list_join();
+    return list_join;
+  }
   
 }

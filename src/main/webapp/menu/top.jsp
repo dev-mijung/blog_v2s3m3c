@@ -11,7 +11,7 @@
     <span style='padding-left: 0.5%;'></span>
     <a class='menu_link'  href='${root}' >Home</a> |
     <a class='menu_link'  href='${root}/blog_categrp/list.do'>카테고리 그룹</a> |
-    <a class='menu_link'  href='${root}/blog_cate/list.do'>카테고리</a> |
+    <a class='menu_link'  href='${root}/blog_cate/list_join.do'>카테고리</a> |
     <a class='menu_link'  href='${root}/blog_contents/list_all.do'>전체글</a>
   </nav>
 </div>

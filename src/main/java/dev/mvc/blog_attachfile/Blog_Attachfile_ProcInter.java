@@ -15,4 +15,18 @@ public interface Blog_Attachfile_ProcInter {
    * @return
    */
   public List<Blog_Attachfile_VO> list();
+  
+  /**
+   * 파일 조회
+   * @param attachfile_no
+   * @return
+   */
+  public Blog_Attachfile_VO read(int attachfile_no);
+  
+  /**
+   * 첨부파일 삭제
+   * @param attachfile_no
+   * @return
+   */
+  public int delete(int attachfile_no);
 }

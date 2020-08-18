@@ -60,9 +60,9 @@
   
   <table class='table table-striped'>
     <colgroup>
-      <col style='width: 5%;'/>
       <col style='width: 10%;'/>
-      <col style='width: 30%;'/>
+      <col style='width: 10%;'/>
+      <col style='width: 20%;'/>
       <col style='width: 20%;'/>
       <col style='width: 10%;'/>
       <col style='width: 5%;'/>
@@ -92,7 +92,7 @@
       <c:set var="cate_visible" value="${blog_cateVO.cate_visible }"/>
       
       <tr>
-        <td class="td_bs">${blog_categrpno}</td>
+        <td class="td_bs">${blog_name}</td>
         <td class="td_bs">${cate_seqno }</td>
         <td class="td_bs"><a href=./read_update.do?cate_no='${cate_no}'>${cate_name }</a></td>
         <td class="td_bs">${cate_rdate.substring(0,10) }</td>

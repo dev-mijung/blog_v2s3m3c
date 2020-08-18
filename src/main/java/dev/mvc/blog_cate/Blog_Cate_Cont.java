@@ -10,8 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import dev.mvc.blog_categrp.Blog_Categrp_ProcInter;
+import dev.mvc.blog_categrp.Blog_Categrp_VO;
+
 @Controller
 public class Blog_Cate_Cont {
+  @Autowired
+  @Qualifier("dev.mvc.blog_categrp.Blog_Categrp_Proc")
+  private Blog_Categrp_ProcInter blog_Categrp_Proc;
+  
   @Autowired
   @Qualifier("dev.mvc.blog_cate.Blog_Cate_Proc")
   private Blog_Cate_ProcInter blog_Cate_Proc;
@@ -82,6 +89,9 @@ public class Blog_Cate_Cont {
     Blog_Cate_VO blog_Cate_VO = this.blog_Cate_Proc.read(cate_no);
     mav.addObject("blog_Cate_VO",blog_Cate_VO);
     
+    Blog_Categrp_VO blog_Categrp_VO = this.blog_Categrp_Proc.read(blog_Cate_VO.getBlog_categrpno());
+    mav.addObject("blog_name", blog_Categrp_VO.getBlog_name());
+    
     List<Blog_Cate_VO> list = this.blog_Cate_Proc.list_seqno_asc();
     mav.addObject("list",list);
     
@@ -90,6 +100,21 @@ public class Blog_Cate_Cont {
     return mav;
   }
   
+  /**
+   * blog_categrp + blog_cate join 전체 목록
+   * @return
+   */
+  @RequestMapping(value="/blog_cate/list_join.do", method=RequestMethod.GET)
+    public ModelAndView list_join() {
+    ModelAndView mav = new ModelAndView();
+    
+    List<Blog_Categrp_Cate_VO> list_join = this.blog_Cate_Proc.list_join();
+    mav.addObject("list_join", list_join);
+    
+    mav.setViewName("/blog_cate/list_join");
+    
+    return mav;
+  }
   /**
    * 카테고리 수정 처리
    * @param blog_Cate_VO
@@ -121,6 +146,9 @@ public class Blog_Cate_Cont {
       
       Blog_Cate_VO blog_Cate_VO = this.blog_Cate_Proc.read(cate_no);
       mav.addObject("blog_Cate_VO",blog_Cate_VO);
+      
+      Blog_Categrp_VO blog_Categrp_VO = this.blog_Categrp_Proc.read(blog_Cate_VO.getBlog_categrpno());
+      mav.addObject("blog_name", blog_Categrp_VO.getBlog_name());
       
       List<Blog_Cate_VO> list = this.blog_Cate_Proc.list_seqno_asc();
       mav.addObject("list",list);

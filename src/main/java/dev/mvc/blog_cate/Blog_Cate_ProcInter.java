@@ -58,4 +58,10 @@ public interface Blog_Cate_ProcInter {
       * @return
       */
      public int update_visible(Blog_Cate_VO blog_Cate_VO);
+     
+     /**
+      * 통합 VO 기반 join
+      * @return
+      */
+     public List<Blog_Categrp_Cate_VO> list_join();
 }
