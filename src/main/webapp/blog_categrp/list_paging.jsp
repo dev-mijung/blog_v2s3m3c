@@ -72,7 +72,7 @@
     
     <tr>
       <td class="td_bs">${blog_seqno }</td>
-      <td class="td_bs_left"><a href='./read_update.do?blog_categrpno=${blog_categrpno}'>${blog_name }</a></td>
+      <td class="td_bs_left"><a href='../blog_cate/list_join_by_blog_categrpno.do?blog_categrpno=${blog_categrpno}'>${blog_name }</a></td>
       <td class="td_bs">${blog_rdate.substring(0,10) }</td>
       <td class="td_bs">
         <c:choose>

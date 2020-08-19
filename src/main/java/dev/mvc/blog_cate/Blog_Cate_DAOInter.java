@@ -64,4 +64,11 @@ public interface Blog_Cate_DAOInter {
    * @return
    */
   public List<Blog_Categrp_Cate_VO> list_join();
+  
+  /**
+   * 통합 VO 기반 join : blog_categrpno별 blog_cate 목록
+   * @param blog_categrpno
+   * @return
+   */
+  public List<Blog_Categrp_Cate_VO> list_join_by_blog_categrpno(int blog_categrpno);
 }

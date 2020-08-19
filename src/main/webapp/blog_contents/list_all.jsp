@@ -20,6 +20,8 @@
     전체 보기
   </aside>
   <aside style='float: right;'>
+    <a href='./create.do'>등록</a>
+    <span class='menu_divide'> | </span>
     <a href='javascript:location.reload();'>새로고침</a>
   </aside>
   

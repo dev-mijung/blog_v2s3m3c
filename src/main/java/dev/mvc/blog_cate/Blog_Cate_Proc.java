@@ -71,5 +71,11 @@ private Blog_Cate_DAOInter blog_Cate_DAO;
     List<Blog_Categrp_Cate_VO> list_join = this.blog_Cate_DAO.list_join();
     return list_join;
   }
+
+  @Override
+  public List<Blog_Categrp_Cate_VO> list_join_by_blog_categrpno(int blog_categrpno) {
+    List<Blog_Categrp_Cate_VO> list_join_by_blog_categrpno = this.blog_Cate_DAO.list_join_by_blog_categrpno(blog_categrpno);
+    return list_join_by_blog_categrpno;
+  }
   
 }

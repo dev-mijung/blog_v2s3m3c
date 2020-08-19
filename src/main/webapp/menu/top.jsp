@@ -12,7 +12,8 @@
     <a class='menu_link'  href='${root}' >Home</a> |
     <a class='menu_link'  href='${root}/blog_categrp/list.do'>카테고리 그룹</a> |
     <a class='menu_link'  href='${root}/blog_cate/list_join.do'>카테고리</a> |
-    <a class='menu_link'  href='${root}/blog_contents/list_all.do'>전체글</a>
+    <a class='menu_link'  href='${root}/blog_contents/list_all.do'>전체글</a> |
+    <a class='menu_link'  href='${root}/blog_attachfile/list.do'>전체 이미지</a>
   </nav>
 </div>
   <!-- 화면을 2개로 분할하여 좌측은 메뉴, 우측은 내용으로 구성-->

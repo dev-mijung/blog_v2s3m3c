@@ -115,6 +115,27 @@ public class Blog_Cate_Cont {
     
     return mav;
   }
+  
+  // http://localhost:9090/myhome/blog_cate/list_join_by_blog_categrpno.do?blog_categrpno=1
+  /**
+   * 통합 VO 기반 join : blog_categrpno별 blog_cate 목록
+   * @param blog_categrpno
+   * @return
+   */
+  @RequestMapping(value="/blog_cate/list_join_by_blog_categrpno.do", method=RequestMethod.GET)
+    public ModelAndView list_join_by_blog_categrpno(int blog_categrpno) {
+    ModelAndView mav = new ModelAndView();
+    
+    List<Blog_Categrp_Cate_VO> list = this.blog_Cate_Proc.list_join_by_blog_categrpno(blog_categrpno);
+    mav.addObject("list", list);
+    
+    Blog_Categrp_VO blog_Categrp_VO = this.blog_Categrp_Proc.read(blog_categrpno);
+    mav.addObject("blog_Categrp_VO", blog_Categrp_VO);
+    
+    mav.setViewName("/blog_cate/list_join_by_blog_categrpno");
+    return mav;
+  }
+  
   /**
    * 카테고리 수정 처리
    * @param blog_Cate_VO
