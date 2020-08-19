@@ -111,4 +111,10 @@ WHERE contents_no=4 AND contents_passwd=1234;
 DELETE FROM blog_contents
 WHERE contents_no=5;
 
+-- catenoº° ¸ñ·Ï
+SELECT contents_no, member_no, cate_no, contents_title, contents_content, contents_web, ip, contents_passwd, contents_word, contents_rdate
+FROM blog_contents
+WHERE cate_no = 1
+ORDER BY contents_no DESC;
+
 COMMIT;

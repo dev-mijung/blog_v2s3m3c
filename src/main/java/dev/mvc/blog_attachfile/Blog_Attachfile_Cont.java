@@ -12,11 +12,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import dev.mvc.blog_cate.Blog_Cate_ProcInter;
+import dev.mvc.blog_contents.Blog_Contents_ProcInter;
+import dev.mvc.blog_contents.Blog_Contents_VO;
 import dev.mvc.tool.Tool;
 import dev.mvc.tool.Upload;
 
 @Controller
 public class Blog_Attachfile_Cont {
+@Autowired
+@Qualifier("dev.mvc.blog_contents.Blog_Contents_Proc")
+   private Blog_Contents_ProcInter Blog_Contents_Proc;
+  
+@Autowired
+@Qualifier("dev.mvc.blog_cate.Blog_Cate_Proc")
+  private Blog_Cate_ProcInter blog_Cate_Proc;
+
 @Autowired
 @Qualifier("dev.mvc.blog_attachfile.Blog_Attachfile_Proc")
   private Blog_Attachfile_ProcInter blog_Attachfile_Proc;
@@ -44,7 +55,7 @@ public class Blog_Attachfile_Cont {
    * @return
    */
   @RequestMapping(value="/blog_attachfile/create.do", method=RequestMethod.POST)
-    public ModelAndView create(HttpServletRequest request, Blog_Attachfile_VO blog_Attachfile_VO) {
+    public ModelAndView create(HttpServletRequest request, Blog_Attachfile_VO blog_Attachfile_VO, int cate_no) {
     ModelAndView mav = new ModelAndView();
     // -----------------------------------------------------
     // 파일 전송 코드 시작
@@ -86,7 +97,8 @@ public class Blog_Attachfile_Cont {
     
     mav.addObject("upload_count", upload_count);
     mav.addObject("contents_no", contents_no);
-    
+    mav.addObject("cate_no", cate_no);
+
     mav.setViewName("redirect:/blog_attachfile/create_msg.jsp");
     return mav;
   }

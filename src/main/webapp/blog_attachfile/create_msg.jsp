@@ -43,7 +43,7 @@
                       onclick='location.href="../blog_contents/read.do?contents_no=${param.contents_no}"'
                       class='btn btn-info'>업로드된 파일 확인</button>
           <button type='button'
-                      onclick='location.href="../blog_contents/list_all.do?cate_no=${param.cate_no }"'
+                      onclick='location.href="../blog_contents/list_by_cate.do?cate_no=${param.cate_no}"'
                       class='btn btn-info'>목록</button>
         </li>
       </ul>

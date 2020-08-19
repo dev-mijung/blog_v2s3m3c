@@ -33,7 +33,7 @@
       <!-- FK member_no 지정-->
       <input type='hidden' name='member_no' id='member_no' value='1'>
       <!-- FK cate_no 지정-->
-      <input type='hidden' name='cate_no' id='cate_no' value='1'>
+      <input type='hidden' name='cate_no' id='cate_no' value='${param.cate_no }'>
       
       <div class='form-group'>
         <div class='col-md-12'>

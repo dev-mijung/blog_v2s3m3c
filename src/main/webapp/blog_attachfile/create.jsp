@@ -30,7 +30,7 @@
   <div style='width: 100%;'>
     <form name='frm' method='POST'  action='./create.do' enctype='multipart/form-data' 
               class='form-horizontal'> 
-      <input type='hidden' name='cate_no' id='cate_no' value='1'>
+      <input type='hidden' name='cate_no' id='cate_no' value='${param.cate_no }'>
       <input type='hidden' name='contents_no' id='contents_no' value='${param.contents_no }'>
       
       <div class='form-group'>

@@ -21,7 +21,7 @@
   </div>
   
   <aside style='float: left;'>
-    <a href='../blog_categrp/list.do'>카테고리 그룹</a>
+    <a href='../blog_categrp/list.do'>카테고리 그룹</a> >
     <a href='../blog_cate/list_join_by_blog_categrpno.do?blog_categrpno=${blog_Cate_VO.blog_categrpno }'>${blog_Categrp_VO.blog_name }</a>
   </aside>
   <aside style='float: right;'>
@@ -63,7 +63,7 @@
         
         <tr>
           <td style='text-align: center;'>${contents_rdate.substring(0,10) }</td>
-          <td style='text-align: center;'>${cate_no }</td>
+          <td style='text-align: center;'>${blog_Cate_VO.cate_name }</td>
           <td style='text-align: center;'>
             <a href='./read.do?contents_no=${contents_no}'>${contents_title }</a>
           </td>
