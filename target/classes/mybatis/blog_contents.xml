@@ -42,4 +42,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     DELETE FROM blog_contents
     WHERE contents_no=#{contents_no}
   </delete>
+  
+  <!-- cate_no 별 목록-->
+  <select id="list_by_cate" resultType="Blog_Contents_VO" parameterType="int">
+    SELECT contents_no, member_no, cate_no, contents_title, contents_content, contents_web, ip, contents_passwd, contents_word, contents_rdate
+    FROM blog_contents
+    WHERE cate_no = #{cate_no}
+    ORDER BY contents_no DESC
+  </select>
 </mapper>

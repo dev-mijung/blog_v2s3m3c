@@ -88,4 +88,12 @@ FROM blog_categrp r, blog_cate c
 WHERE r.blog_categrpno = c.blog_categrpno
 ORDER BY r.blog_categrpno ASC, c.cate_seqno ASC;
 
+-- 통합 VO, categrpno 별 cate 목록
+SELECT r.blog_categrpno as r_blog_categrpno, r.blog_name as r_blog_name,
+          c.cate_no, c.blog_categrpno, c.cate_name, c.cate_seqno, c.cate_visible, c.cate_rdate,
+          c.cate_cnt
+FROM blog_categrp r, blog_cate c
+WHERE (r.blog_categrpno = c.blog_categrpno) AND r.blog_categrpno=1
+ORDER BY r.blog_categrpno ASC, c.cate_seqno ASC;
+
 COMMIT;

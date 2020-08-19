@@ -61,4 +61,10 @@ public class Blog_Contents_Proc implements Blog_Contents_ProcInter {
     return cnt;
   }
 
+  @Override
+  public List<Blog_Contents_VO> list_by_cate(int cate_no) {
+    List<Blog_Contents_VO> list_by_cate = this.blog_Contents_DAO.list_by_cate(cate_no);
+    return list_by_cate;
+  }
+
 }

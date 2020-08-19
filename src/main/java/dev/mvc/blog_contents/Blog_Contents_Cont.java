@@ -84,6 +84,29 @@ public class Blog_Contents_Cont {
     return mav;
   }
   
+  // http://localhost:9090/myhome/blog_contents/list_by_cate.do?cate_no=1
+  /**
+   * cate_noº° ¸ñ·Ï
+   * @param cate_no
+   * @return
+   */
+  @RequestMapping(value="/blog_contents/list_by_cate", method=RequestMethod.GET)
+    public ModelAndView list_by_cate(int cate_no) {
+    ModelAndView mav = new ModelAndView();
+    
+    List<Blog_Contents_VO> list = this.Blog_Contents_Proc.list_by_cate(cate_no);
+    mav.addObject("list", list);
+    
+    Blog_Cate_VO blog_Cate_VO = this.blog_Cate_Proc.read(cate_no);
+    mav.addObject("blog_Cate_VO", blog_Cate_VO);
+    
+    Blog_Categrp_VO blog_Categrp_VO = this.blog_Categrp_Proc.read(blog_Cate_VO.getBlog_categrpno());
+    mav.addObject("blog_Categrp_VO", blog_Categrp_VO);
+    
+    mav.setViewName("/blog_contents/list_by_cate");
+    return mav;
+  }
+  
   // http://localhost:9090/myhome/blog_contents/read.do?contents_no=2
   /**
    * ÄÁÅÙÃ÷ 1°Ç Á¶È¸

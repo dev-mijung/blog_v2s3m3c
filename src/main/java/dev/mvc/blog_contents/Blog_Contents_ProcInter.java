@@ -19,6 +19,13 @@ public interface Blog_Contents_ProcInter {
   public List<Blog_Contents_VO> list_all();
   
   /**
+   * cate_no별 목록
+   * @param cate_no
+   * @return
+   */
+  public List<Blog_Contents_VO> list_by_cate(int cate_no);
+  
+  /**
    * 블로그 컨텐츠 1건 조회
    * @param contents_no
    * @return
